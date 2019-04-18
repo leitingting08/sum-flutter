@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/components/myswiper.dart';
 import 'package:app/components/myheader.dart';
+import 'package:app/components/myiconlist.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class Home extends StatelessWidget {
                 }).toList(),
                 height: 180.0,
                 autoPlay: true),
-
+            new MyIconList()
             // header swiper iconlist classlist
           ],
         ),

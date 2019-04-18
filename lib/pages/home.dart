@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app/components/myswiper.dart';
+import 'package:app/components/myheader.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -12,6 +13,7 @@ class Home extends StatelessWidget {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            new MyHeader(),
             new CarouselSlider(
                 items: [1, 2, 3, 4, 5].map((i) {
                   return new Builder(
@@ -28,7 +30,8 @@ class Home extends StatelessWidget {
                   );
                 }).toList(),
                 height: 180.0,
-                autoPlay: true)
+                autoPlay: true),
+
             // header swiper iconlist classlist
           ],
         ),

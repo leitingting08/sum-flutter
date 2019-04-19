@@ -21,25 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   @override
-//   _MyHomePageState createState() => new _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       appBar: new AppBar(
-//         title: new Text('My App'),
-//       ),
-//       body: new Center(
-//         child: new Column(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: <Widget>[],
-//         ),
-//       ),
-//     );
-//   }
-// }

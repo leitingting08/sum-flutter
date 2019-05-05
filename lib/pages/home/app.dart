@@ -16,7 +16,23 @@ class _MyHomePageState extends State<AppPage>
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: Text('summer')),
+      appBar: new AppBar(
+        title: Text('Summer'),
+        actions: <Widget>[
+          //导航栏右侧菜单
+          IconButton(icon: Icon(Icons.share), onPressed: () {}),
+        ],
+        leading: Builder(builder: (context) {
+          return IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              });
+        }),
+      ),
       body: new Material(
         color: const Color(0xFFF0EEEF), //底部导航栏主题颜色
         child: SafeArea(

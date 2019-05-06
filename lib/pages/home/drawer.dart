@@ -39,12 +39,20 @@ class MyDrawer extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    leading: const Icon(Icons.add),
-                    title: const Text('Add account'),
+                    leading: const Icon(Icons.tablet_mac),
+                    title: const Text('演出'),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.settings),
-                    title: const Text('Manage accounts'),
+                    leading: const Icon(Icons.add_shopping_cart),
+                    title: const Text('商城'),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.zoom_out_map),
+                    title: const Text('附近的人'),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.code),
+                    title: const Text('扫一扫'),
                   ),
                 ],
               ),

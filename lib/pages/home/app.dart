@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-// import './home.dart';
+// import 'package:flutter/rendering.dart';
+import 'package:app/pages/home/drawer.dart';
 
 const int ThemeColor = 0xFFC91B3A;
 
@@ -13,14 +13,29 @@ class AppPage extends StatefulWidget {
 
 class _MyHomePageState extends State<AppPage>
     with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  List tabs = ["我的", "发现", "朋友", "视频"];
+
   @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: tabs.length, vsync: this);
+  }
+
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: Text('Summer'),
+        title: TabBar(
+            controller: _tabController,
+            tabs: tabs
+                .map((e) => Tab(
+                      text: e,
+                    ))
+                .toList()),
         actions: <Widget>[
           //导航栏右侧菜单
-          IconButton(icon: Icon(Icons.share), onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.search, color: Colors.white), onPressed: () {}),
         ],
         leading: Builder(builder: (context) {
           return IconButton(
@@ -33,24 +48,13 @@ class _MyHomePageState extends State<AppPage>
               });
         }),
       ),
-      body: new Material(
-        color: const Color(0xFFF0EEEF), //底部导航栏主题颜色
-        child: SafeArea(
-          child: Container(
-            height: 65.0,
-            decoration: BoxDecoration(
-              color: const Color(0xFFF0F0F0),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                  color: const Color(0xFFd0d0d0),
-                  blurRadius: 3.0,
-                  spreadRadius: 2.0,
-                  offset: Offset(-1.0, -1.0),
-                ),
-              ],
-            ),
-          ),
-        ),
+      drawer: new MyDrawer(), //抽屉
+      body: TabBarView(
+        controller: _tabController,
+        children: tabs.map((e) {
+          return Container(
+              alignment: Alignment.center, child: Text(e, textScaleFactor: 5));
+        }).toList(),
       ),
     );
   }

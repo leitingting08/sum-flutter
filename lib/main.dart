@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       //   // '/search': (BuildContext context) => new Search(),
       //   // '/classdetail': (BuildContext context) => new Classdetail(),
       // },
-      theme: new ThemeData(primarySwatch: Colors.yellow),
+      theme: new ThemeData(primarySwatch: Colors.red),
       home: new AppPage(),
     );
   }

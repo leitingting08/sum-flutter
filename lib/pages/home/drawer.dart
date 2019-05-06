@@ -39,7 +39,7 @@ class MyDrawer extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    leading: const Icon(Icons.tablet_mac),
+                    leading: const Icon(Icons.perm_camera_mic),
                     title: const Text('演出'),
                   ),
                   ListTile(
@@ -47,7 +47,7 @@ class MyDrawer extends StatelessWidget {
                     title: const Text('商城'),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.zoom_out_map),
+                    leading: const Icon(Icons.place),
                     title: const Text('附近的人'),
                   ),
                   ListTile(

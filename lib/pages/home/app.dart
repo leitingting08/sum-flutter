@@ -26,8 +26,8 @@ class _MyHomePageState extends State<AppPage>
   }
 
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
+    return Scaffold(
+        appBar: AppBar(
           title: TabBar(
               controller: _tabController,
               tabs: tabs
@@ -52,14 +52,14 @@ class _MyHomePageState extends State<AppPage>
                 });
           }),
         ),
-        drawer: new MyDrawer(), //抽屉
+        drawer: MyDrawer(), //抽屉
         body: Center(
           child: TabBarView(
             controller: _tabController,
             children: <Widget>[
-              new MyHome(),
-              new MyDiscover(),
-              new MyFriends(),
+              MyHome(),
+              MyDiscover(),
+              MyFriends(),
             ],
           ),
         ));

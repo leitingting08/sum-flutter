@@ -54,6 +54,12 @@ class MyHome extends StatelessWidget {
                       "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
                   tit: '老张',
                   length: 12,
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  child: Text('跳转登录'),
                 )
               ],
             ))

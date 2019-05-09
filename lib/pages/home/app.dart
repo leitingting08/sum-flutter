@@ -27,44 +27,41 @@ class _MyHomePageState extends State<AppPage>
 
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(
-        title: TabBar(
+        appBar: new AppBar(
+          title: TabBar(
+              controller: _tabController,
+              tabs: tabs
+                  .map((e) => Tab(
+                        text: e,
+                      ))
+                  .toList()),
+          actions: <Widget>[
+            //导航栏右侧菜单
+            IconButton(
+                icon: Icon(Icons.search, color: Colors.white),
+                onPressed: () {}),
+          ],
+          leading: Builder(builder: (context) {
+            return IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                });
+          }),
+        ),
+        drawer: new MyDrawer(), //抽屉
+        body: Center(
+          child: TabBarView(
             controller: _tabController,
-            tabs: tabs
-                .map((e) => Tab(
-                      text: e,
-                    ))
-                .toList()),
-        actions: <Widget>[
-          //导航栏右侧菜单
-          IconButton(
-              icon: Icon(Icons.search, color: Colors.white), onPressed: () {}),
-        ],
-        leading: Builder(builder: (context) {
-          return IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              });
-        }),
-      ),
-      drawer: new MyDrawer(), //抽屉
-      body: TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-          new MyHome(),
-          new MyDiscover(),
-          new MyFriends(),
-        ],
-        // tabs.map((e) {
-        //   return Container(
-        //       alignment: Alignment.center, child: Text(e, textScaleFactor: 5)
-        //       );
-        // }).toList(),
-      ),
-    );
+            children: <Widget>[
+              new MyHome(),
+              new MyDiscover(),
+              new MyFriends(),
+            ],
+          ),
+        ));
   }
 }

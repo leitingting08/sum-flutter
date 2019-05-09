@@ -5,7 +5,7 @@ class MyFriends extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Text('aaa'),
+        child: Text('friends'),
       ),
     );
   }

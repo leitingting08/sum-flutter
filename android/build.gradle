@@ -1,6 +1,10 @@
 buildscript {
     repositories {
-        google()
+        // google()
+        // jcenter()
+        maven {
+            url 'https://dl.google.com/dl/android/maven2'
+        }
         jcenter()
     }
 
@@ -11,7 +15,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+        // google()
+        // jcenter()
+        maven {
+            url 'https://dl.google.com/dl/android/maven2'
+        }
         jcenter()
     }
 }

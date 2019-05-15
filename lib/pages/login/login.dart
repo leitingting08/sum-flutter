@@ -5,6 +5,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
+            child: Container(
       child: Column(
         children: <Widget>[
           Padding(
@@ -32,7 +33,7 @@ class LoginPage extends StatelessWidget {
                       color: Colors.red,
                       onPressed: () => {
                             Navigator.pushNamed(context, '/register',
-                                arguments: {'text': '手机号登录'})
+                                arguments: {'id': 1})
                           },
                     )),
                 ButtonTheme(
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () => {
                             Navigator.pushNamed(context, '/register',
-                                arguments: {'text': '手机号注册'})
+                                arguments: {'id': 0})
                           },
                     ))
               ],
@@ -91,7 +92,7 @@ class LoginPage extends StatelessWidget {
                           color: Colors.grey, size: 40.0),
                       onPressed: () => {
                             Navigator.pushNamed(context, '/register',
-                                arguments: {'text': '网易邮箱登录'})
+                                arguments: {'id': 2})
                           },
                     )),
               ],
@@ -99,6 +100,6 @@ class LoginPage extends StatelessWidget {
           )
         ],
       ),
-    ));
+    )));
   }
 }

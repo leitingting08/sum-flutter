@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:app/utils/netutils.dart';
-// 1 手机号登录 0 手机号注册 2网易邮箱登录
 
-class RegisterPage extends StatelessWidget {
-  RegisterPage(
-      {this.arguments, this.title, this.userinput, this.passwordinput});
-  final Map arguments;
-  final String title;
-  final String userinput;
-  final String passwordinput;
-
+class ForgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // if (arguments != null && arguments['id'] == 0) {
-    //   setState() {
-    //     title = '手机号注册';
-    //     userinput = '请输入手机号码';
-    //     passwordinput = '请输入密码';
-    //   }
-    // }
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("忘记密码"),
       ),
       body: Container(
         child: Container(
@@ -50,7 +33,7 @@ class RegisterPage extends StatelessWidget {
                           child: TextFormField(
                             autofocus: false,
                             decoration: InputDecoration.collapsed(
-                              hintText: '请输入密码',
+                              hintText: '设置登录密码，不少于6位',
                             ),
                           ),
                         ),
@@ -67,7 +50,7 @@ class RegisterPage extends StatelessWidget {
                         textColor: Colors.white,
                         color: Colors.red,
                         child: Text(
-                          '登录',
+                          '下一步',
                           style: TextStyle(fontSize: 18),
                         ),
                       ),

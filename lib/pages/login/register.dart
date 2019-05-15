@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
+
 // import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:app/utils/netutils.dart';
 // 1 手机号登录 0 手机号注册 2网易邮箱登录
-
-class RegisterPage extends StatelessWidget {
-  RegisterPage(
-      {this.arguments, this.title, this.userinput, this.passwordinput});
+class RegisterPage extends StatefulWidget {
+  RegisterPage({Key key, this.arguments}) : super(key: key);
   final Map arguments;
-  final String title;
-  final String userinput;
-  final String passwordinput;
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+// class RegisterPage extends StatelessWidget {
+  // RegisterPage(
+  //     {Key key, this.arguments, this.title, this.userinput, this.passwordinput}) : super(key: key);
+  // Map arguments;
+  String title;
+  String userinput;
+  String passwordinput;
+
+  void _getTextInfo() {
+    // if (arguments != null && arguments['id'] == 0) {
+    title = '手机号注册';
+    userinput = '请输入手机号码';
+    passwordinput = '请输入密码';
+    // }
+  }
 
   @override
+  void initState() {
+    super.initState();
+    _getTextInfo();
+  }
+
   Widget build(BuildContext context) {
-    // if (arguments != null && arguments['id'] == 0) {
-    //   setState() {
-    //     title = '手机号注册';
-    //     userinput = '请输入手机号码';
-    //     passwordinput = '请输入密码';
-    //   }
-    // }
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),

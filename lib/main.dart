@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   // 定义路由信息
   final Map<String, Function> routes = {
     '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
-    '/login': (BuildContext context) => LoginPage(),
-    '/forget': (BuildContext context) => ForgetPage()
+    '/login': (context, {arguments}) => LoginPage(arguments: arguments),
+    '/forget': (context, {arguments}) => ForgetPage()
   };
   @override
   Widget build(BuildContext context) {

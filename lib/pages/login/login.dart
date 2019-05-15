@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
+  LoginPage({this.arguments});
+  final Map arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

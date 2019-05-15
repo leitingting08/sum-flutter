@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key, this.arguments}) : super(key: key);
   final Map arguments;
+  // int id = arguments['id'];
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -55,7 +57,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: TextFormField(
                             autofocus: true,
                             decoration: InputDecoration.collapsed(
-                              hintText: '请输入手机号码',
+                              hintText: userinput,
                             ),
                           ),
                         ),
@@ -64,7 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: TextFormField(
                             autofocus: false,
                             decoration: InputDecoration.collapsed(
-                              hintText: '请输入密码',
+                              hintText: passwordinput,
                             ),
                           ),
                         ),

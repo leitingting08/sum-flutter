@@ -6,23 +6,18 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key, this.arguments}) : super(key: key);
   final Map arguments;
-  // int id = arguments['id'];
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-// class RegisterPage extends StatelessWidget {
-  // RegisterPage(
-  //     {Key key, this.arguments, this.title, this.userinput, this.passwordinput}) : super(key: key);
-  // Map arguments;
   String title;
   String userinput;
   String passwordinput;
 
   void _getTextInfo() {
-    // if (arguments != null && arguments['id'] == 0) {
+    // if (this.arguments != null && this.arguments['id'] == 0) {
     title = '手机号注册';
     userinput = '请输入手机号码';
     passwordinput = '请输入密码';

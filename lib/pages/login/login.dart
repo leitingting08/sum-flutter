@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({this.arguments});
-  final Map arguments;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +52,14 @@ class LoginPage extends StatelessWidget {
                             Navigator.pushNamed(context, '/register',
                                 arguments: {'id': 0})
                           },
-                    ))
+                    )),
+                GestureDetector(
+                  child: Text(
+                    '游客试用>',
+                    style: TextStyle(color: Color(0xFF666666)),
+                  ),
+                  onTap: () => {Navigator.pushNamed(context, '/')},
+                )
               ],
             ),
           ),

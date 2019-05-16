@@ -10,8 +10,9 @@ class MyApp extends StatelessWidget {
   // 定义路由信息
   final Map<String, Function> routes = {
     '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
-    '/login': (context, {arguments}) => LoginPage(arguments: arguments),
-    '/forget': (context, {arguments}) => ForgetPage()
+    '/login': (BuildContext context) => LoginPage(),
+    '/forget': (BuildContext context) => ForgetPage(),
+    '/': (BuildContext context) => AppPage(),
   };
   @override
   Widget build(BuildContext context) {
@@ -23,10 +24,17 @@ class MyApp extends StatelessWidget {
         final String name = settings.name;
         final Function pageContentBuilder = this.routes[name];
         if (pageContentBuilder != null) {
-          final Route route = MaterialPageRoute(
-              builder: (context) =>
-                  pageContentBuilder(context, arguments: settings.arguments));
-          return route;
+          if (settings.arguments != null) {
+            final Route route = MaterialPageRoute(
+                builder: (context) =>
+                    pageContentBuilder(context, arguments: settings.arguments));
+            return route;
+          } else {
+            // 不设置路由传参
+            final Route route = MaterialPageRoute(
+                builder: (context) => pageContentBuilder(context));
+            return route;
+          }
         }
       },
       theme: new ThemeData(primarySwatch: Colors.red),

@@ -12,7 +12,9 @@ class MyHome extends StatelessWidget {
           children: <Widget>[
             Container(
               // color: Colors.white,
+              // height: 500.0,
               child: Expanded(
+                flex: 7,
                 child: ListView(
                   children: <Widget>[
                     MyIconList(
@@ -42,28 +44,41 @@ class MyHome extends StatelessWidget {
             Container(
               // color: Colors.white,
               child: Expanded(
+                  flex: 10,
                   child: ListView(
-                children: <Widget>[
-                  MyMusicList(
-                    pic:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
-                    tit: '我喜欢的音乐',
-                    length: 520,
-                  ),
-                  MyMusicList(
-                    pic:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
-                    tit: 'summer的年度歌单',
-                    length: 10,
-                  ),
-                  MyMusicList(
-                    pic:
-                        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
-                    tit: '老张',
-                    length: 12,
-                  ),
-                ],
-              )),
+                    children: <Widget>[
+                      MyMusicList(
+                        pic:
+                            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
+                        tit: '我喜欢的音乐',
+                        length: 520,
+                      ),
+                      MyMusicList(
+                        pic:
+                            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
+                        tit: 'summer的年度歌单',
+                        length: 10,
+                      ),
+                      MyMusicList(
+                        pic:
+                            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
+                        tit: '老张',
+                        length: 12,
+                      ),
+                      MyMusicList(
+                        pic:
+                            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
+                        tit: '朴树',
+                        length: 10,
+                      ),
+                      MyMusicList(
+                        pic:
+                            "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557398526517&di=de122cd4a0751b486aa332e0deaef271&imgtype=0&src=http%3A%2F%2Fimg.cnmo-img.com.cn%2F1362_600x375%2F1361466.jpg",
+                        tit: '哈哈哈',
+                        length: 112,
+                      ),
+                    ],
+                  )),
             )
           ],
         )),

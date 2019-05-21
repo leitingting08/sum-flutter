@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart';
 import 'package:app/pages/home/drawer.dart';
 import 'package:app/pages/home/mine.dart';
 import 'package:app/pages/home/discover.dart';
@@ -39,7 +38,9 @@ class _MyHomePageState extends State<AppPage>
             //导航栏右侧菜单
             IconButton(
                 icon: Icon(Icons.search, color: Colors.white),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/search');
+                }),
           ],
           leading: Builder(builder: (context) {
             return IconButton(

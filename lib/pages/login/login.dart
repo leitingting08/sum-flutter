@@ -2,6 +2,26 @@ import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
   @override
+  // _showDialog(
+  // context: context,
+  // builder: (context) => AlertDialog(
+  //       title: Text('Dialog'),
+  //       content: Text(('Dialog content..')),
+  //       actions: <Widget>[
+  //         new FlatButton(
+  //           child: new Text("取消"),
+  //           onPressed: () {
+  //             Navigator.of(context).pop();
+  //           },
+  //         ),
+  //         new FlatButton(
+  //           child: new Text("确定"),
+  //           onPressed: () {
+  //             Navigator.of(context).pop();
+  //           },
+  //         ),
+  //       ],
+  //     ));
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
@@ -32,8 +52,13 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Colors.red,
                       onPressed: () => {
-                            Navigator.pushNamed(context, '/register',
-                                arguments: {'id': 1})
+                        // 带返回值
+                          Navigator.of(context).pushNamed('/register').then((value) {
+                              // dialog显示返回值
+                              // _showDialog(context, value);
+                            })
+                            // Navigator.pushNamed(context, '/register',
+                            //     arguments: {'id': 1})
                           },
                     )),
                 ButtonTheme(

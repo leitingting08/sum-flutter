@@ -15,6 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String title;
   String userinput;
   String passwordinput;
+  String eventEmitter = '初始化的值';
 
   void _getTextInfo() {
     // if (this.arguments != null && this.arguments['id'] == 0) {
@@ -30,8 +31,15 @@ class _RegisterPageState extends State<RegisterPage> {
     _getTextInfo();
   }
 
+  void updateText(String text) {
+    //更新显示的事件名
+    setState(() {
+      eventEmitter = text;
+    });
+  }
+
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
@@ -67,11 +75,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ],
                     )),
-                    new Container(
+                    Container(
                       width: 310,
                       height: 47,
                       margin: const EdgeInsets.only(top: 30),
-                      child: new RaisedButton(
+                      child: RaisedButton(
                         onPressed: () => {},
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
@@ -82,7 +90,18 @@ class _RegisterPageState extends State<RegisterPage> {
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
-                    )
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(top: 100),
+                        child: GestureDetector(
+                          child: Text(
+                            eventEmitter,
+                            style: TextStyle(fontSize: 24),
+                          ),
+                          onTap: () => updateText("点击"),
+                          onDoubleTap: () => updateText("双击"),
+                          onLongPress: () => updateText("长按"),
+                        ))
                   ],
                 ),
               ),

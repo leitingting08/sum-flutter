@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app/components/showDialog.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -33,20 +33,12 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Colors.red,
                       onPressed: () => {
-                        //
-                        Navigator.push(context, MaterialPageRoute(builder: (_) {
-                          return MyDialog(content: '跳转登录');
-                        }))
-
-                        // Navigator.of(context)
-                        //     .pushNamed('/register')
-                        //     .then((value) {
-                        //   // dialog显示返回值
-                        //   MyDialog(content: value);
-                        // })
-                        // Navigator.pushNamed(context, '/register',
-                        //     arguments: {'id': 1})
-                      },
+                            Fluttertoast.showToast(
+                              msg: "请先注册",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                          },
                     )),
                 ButtonTheme(
                     minWidth: 300.0,
@@ -61,9 +53,9 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () => {
-                        Navigator.pushNamed(context, '/register',
-                            arguments: {'id': 0})
-                      },
+                            Navigator.pushNamed(context, '/register',
+                                arguments: {'id': 0})
+                          },
                     )),
                 GestureDetector(
                   child: Text(
@@ -110,9 +102,12 @@ class LoginPage extends StatelessWidget {
                       icon: Icon(IconData(0xe63c, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
                       onPressed: () => {
-                        Navigator.pushNamed(context, '/register',
-                            arguments: {'id': 2})
-                      },
+                            Navigator.pushNamed(
+                              context,
+                              '/register',
+                              arguments: <String, String>{'text': '邮箱登录'},
+                            )
+                          },
                     )),
               ],
             ),

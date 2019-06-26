@@ -10,7 +10,8 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // 定义路由信息
   final Map<String, Function> routes = {
-    '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
+    // '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
+    '/register': (BuildContext context) => RegisterPage(),
     '/login': (BuildContext context) => LoginPage(),
     '/forget': (BuildContext context) => ForgetPage(),
     '/search': (BuildContext context) => SearchPage(),

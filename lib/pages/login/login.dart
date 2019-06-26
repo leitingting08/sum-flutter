@@ -1,27 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:app/components/showDialog.dart';
 
 class LoginPage extends StatelessWidget {
   @override
-  // _showDialog(
-  // context: context,
-  // builder: (context) => AlertDialog(
-  //       title: Text('Dialog'),
-  //       content: Text(('Dialog content..')),
-  //       actions: <Widget>[
-  //         new FlatButton(
-  //           child: new Text("取消"),
-  //           onPressed: () {
-  //             Navigator.of(context).pop();
-  //           },
-  //         ),
-  //         new FlatButton(
-  //           child: new Text("确定"),
-  //           onPressed: () {
-  //             Navigator.of(context).pop();
-  //           },
-  //         ),
-  //       ],
-  //     ));
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
@@ -52,14 +33,20 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Colors.red,
                       onPressed: () => {
-                        // 带返回值
-                          Navigator.of(context).pushNamed('/register').then((value) {
-                              // dialog显示返回值
-                              // _showDialog(context, value);
-                            })
-                            // Navigator.pushNamed(context, '/register',
-                            //     arguments: {'id': 1})
-                          },
+                        //
+                        Navigator.push(context, MaterialPageRoute(builder: (_) {
+                          return MyDialog(content: '跳转登录');
+                        }))
+
+                        // Navigator.of(context)
+                        //     .pushNamed('/register')
+                        //     .then((value) {
+                        //   // dialog显示返回值
+                        //   MyDialog(content: value);
+                        // })
+                        // Navigator.pushNamed(context, '/register',
+                        //     arguments: {'id': 1})
+                      },
                     )),
                 ButtonTheme(
                     minWidth: 300.0,
@@ -74,9 +61,9 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () => {
-                            Navigator.pushNamed(context, '/register',
-                                arguments: {'id': 0})
-                          },
+                        Navigator.pushNamed(context, '/register',
+                            arguments: {'id': 0})
+                      },
                     )),
                 GestureDetector(
                   child: Text(
@@ -123,9 +110,9 @@ class LoginPage extends StatelessWidget {
                       icon: Icon(IconData(0xe63c, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
                       onPressed: () => {
-                            Navigator.pushNamed(context, '/register',
-                                arguments: {'id': 2})
-                          },
+                        Navigator.pushNamed(context, '/register',
+                            arguments: {'id': 2})
+                      },
                     )),
               ],
             ),

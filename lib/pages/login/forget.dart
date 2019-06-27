@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ForgetPage extends StatelessWidget {
+  ForgetPage({this.arguments});
+  final Map arguments;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("忘记密码"),
@@ -39,7 +42,7 @@ class ForgetPage extends StatelessWidget {
                         ),
                       ],
                     )),
-                    new Container(
+                   Container(
                       width: 310,
                       height: 47,
                       margin: const EdgeInsets.only(top: 30),
@@ -54,7 +57,9 @@ class ForgetPage extends StatelessWidget {
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
-                    )
+                    ),
+                    Padding(padding: EdgeInsets.only(top: 20),
+                    child: Text('参数：${arguments != null ? arguments['id'] : '0'}'),)
                   ],
                 ),
               ),

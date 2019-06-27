@@ -10,12 +10,11 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // 定义路由信息
   final Map<String, Function> routes = {
-    // '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
-    '/register': (BuildContext context) => RegisterPage(),
-    '/login': (BuildContext context) => LoginPage(),
-    '/forget': (BuildContext context) => ForgetPage(),
-    '/search': (BuildContext context) => SearchPage(),
-    '/': (BuildContext context) => AppPage(),
+    '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
+    '/login': (context) => LoginPage(),
+    '/forget': (context, {arguments}) => ForgetPage(arguments: arguments),
+    '/search': (context) => SearchPage(),
+    '/': (context) => AppPage(),
   };
   @override
   Widget build(BuildContext context) {
@@ -23,21 +22,36 @@ class MyApp extends StatelessWidget {
       title: '网易云音乐',
       // 处理Named页面跳转 传递参数
       onGenerateRoute: (RouteSettings settings) {
+        // final Function pageContentBuilder = this.routes[settings.name];
+
+        // if (settings.name == RegisterPage.routeName) {
+        //   final ScreenArguments args = settings.arguments;
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       return RegisterPage(
+        //         title: args.title,
+        //       );
+        //     },
+        //   );
+        // } else {
+        //   final Route route = MaterialPageRoute(
+        //       builder: (context) => pageContentBuilder(context));
+        //   return route;
+        // }
+        // print(settings.arguments);
         // 统一处理
         final String name = settings.name;
         final Function pageContentBuilder = this.routes[name];
-        if (pageContentBuilder != null) {
-          if (settings.arguments != null) {
-            final Route route = MaterialPageRoute(
-                builder: (context) =>
-                    pageContentBuilder(context, arguments: settings.arguments));
-            return route;
-          } else {
-            // 不设置路由传参
-            final Route route = MaterialPageRoute(
-                builder: (context) => pageContentBuilder(context));
-            return route;
-          }
+        if (settings.arguments != null) {
+          final Route route = MaterialPageRoute(
+              builder: (context) =>
+                  pageContentBuilder(context, arguments: settings.arguments));
+          return route;
+        } else {
+          // 不设置路由传参
+          final Route route = MaterialPageRoute(
+              builder: (context) => pageContentBuilder(context));
+          return route;
         }
       },
       theme: new ThemeData(primarySwatch: Colors.red),

@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
-
 // import 'package:app/utils/netutils.dart';
-// 1 手机号登录 0 手机号注册 2网易邮箱登录
+
 class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key, this.text}) : super(key: key);
-  final String text;
+  RegisterPage({
+    Key key,
+    this.arguments,
+  }) : super(key: key);
+  final Map arguments;
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String title;
   String userinput;
   String passwordinput;
   String eventEmitter = '点击、双击长按事件的触发';
   String dialogTxt = '点击我出现弹框';
 
   void _getTextInfo() {
-    // setState(() {
-    //   // title:this.text
-    // });
-    // if (this.arguments != null && this.arguments['id'] == 0) {
-    title = '手机号注册';
     userinput = '请输入手机号码';
     passwordinput = '请输入密码';
-    // }
   }
 
   @override
@@ -63,10 +58,11 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget build(BuildContext context) {
+  Widget build(context) {
+    final Map args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(args['title']),
       ),
       body: Container(
         child: Container(
@@ -116,6 +112,18 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
+                     Padding(
+                        padding: EdgeInsets.only(top: 100),
+                        child: GestureDetector(
+                          child: Text(
+                            '忘记密码',
+                            style: TextStyle(fontSize: 24),
+                          ),
+                          onTap: () => {
+                            Navigator.pushNamed(context, '/forget',
+                                arguments: {'id': '我是Named方法穿过来的参数'})
+                          },
+                        )),
                     Padding(
                         padding: EdgeInsets.only(top: 100),
                         child: GestureDetector(

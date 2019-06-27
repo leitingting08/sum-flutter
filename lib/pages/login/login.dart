@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:app/pages/login/register.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -53,8 +54,14 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () => {
-                            Navigator.pushNamed(context, '/register',
-                                arguments: {'id': 0})
+                            // Navigator.pushNamed(context, '/register',
+                            //     arguments: {'id': 0})
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage(),
+                                    settings:
+                                        RouteSettings(arguments: {'title': '手机号注册'})))
                           },
                     )),
                 GestureDetector(
@@ -102,11 +109,14 @@ class LoginPage extends StatelessWidget {
                       icon: Icon(IconData(0xe63c, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
                       onPressed: () => {
-                            Navigator.pushNamed(
-                              context,
-                              '/register',
-                              arguments: <String, String>{'text': '邮箱登录'},
-                            )
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => RegisterPage(),
+                                    settings:
+                                        RouteSettings(arguments: {'title': '网易邮箱登录'})))
+                            //  Navigator.pushNamed(context, '/register',
+                            //     arguments: {'id': 2})
                           },
                     )),
               ],

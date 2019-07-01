@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:app/utils/netutils.dart';
+import 'package:app/components/showMyDialog.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({
@@ -13,13 +14,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String userinput;
   String passwordinput;
   String eventEmitter = '点击、双击长按事件的触发';
   String dialogTxt = '点击我出现弹框';
 
   void _getTextInfo() {
-    userinput = '请输入手机号码';
     passwordinput = '请输入密码';
   }
 
@@ -34,28 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(() {
       eventEmitter = text;
     });
-  }
-
-  _generateAlertDialog(String contents) {
-    return AlertDialog(
-      title: Text('这是标题'),
-      content: Text(contents),
-      actions: <Widget>[
-        FlatButton(
-          child: Text('取消'),
-          onPressed: () {
-            Navigator.pop(context, '点击了取消');
-          },
-        ),
-        FlatButton(
-          child: Text('确认'),
-          onPressed: () {
-            Navigator.pop(context, '点击了确认');
-            Navigator.of(context).pushNamed('/search');
-          },
-        ),
-      ],
-    );
   }
 
   Widget build(context) {
@@ -81,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: TextFormField(
                             autofocus: true,
                             decoration: InputDecoration.collapsed(
-                              hintText: userinput,
+                              hintText: args['hinText'],
                             ),
                           ),
                         ),
@@ -107,12 +84,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         textColor: Colors.white,
                         color: Colors.red,
                         child: Text(
-                          '登录',
+                          args['btnText'],
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
                     ),
-                     Padding(
+                    Padding(
                         padding: EdgeInsets.only(top: 100),
                         child: GestureDetector(
                           child: Text(
@@ -120,32 +97,33 @@ class _RegisterPageState extends State<RegisterPage> {
                             style: TextStyle(fontSize: 24),
                           ),
                           onTap: () => {
-                            Navigator.pushNamed(context, '/forget',
-                                arguments: {'id': '我是Named方法穿过来的参数'})
-                          },
+                                // Navigator.pushNamed(context, '/forget',
+                                //     arguments: {'id': '我是Named方法穿过来的参数'})
+                                Flutterdialog.showMyDialog(content: '哈哈哈')
+                              },
                         )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 100),
-                        child: GestureDetector(
-                          child: Text(
-                            eventEmitter,
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          onTap: () => updateText("点击"),
-                          onDoubleTap: () => updateText("双击"),
-                          onLongPress: () => updateText("长按"),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(top: 100),
-                        child: GestureDetector(
-                          child: Text(
-                            dialogTxt,
-                            style: TextStyle(fontSize: 24),
-                          ),
-                          onTap: () => showDialog(
-                              context: context,
-                              builder: (_) => _generateAlertDialog("我是弹框的内容")),
-                        ))
+                    // Padding(
+                    //     padding: EdgeInsets.only(top: 100),
+                    //     child: GestureDetector(
+                    //       child: Text(
+                    //         eventEmitter,
+                    //         style: TextStyle(fontSize: 24),
+                    //       ),
+                    //       onTap: () => updateText("点击"),
+                    //       onDoubleTap: () => updateText("双击"),
+                    //       onLongPress: () => updateText("长按"),
+                    //     )),
+                    // Padding(
+                    //     padding: EdgeInsets.only(top: 100),
+                    //     child: GestureDetector(
+                    //       child: Text(
+                    //         dialogTxt,
+                    //         style: TextStyle(fontSize: 24),
+                    //       ),
+                    //       onTap: () => showDialog(
+                    //           context: context,
+                    //           builder: (_) => _generateAlertDialog("我是弹框的内容")),
+                    //     ))
                   ],
                 ),
               ),

@@ -99,7 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           onTap: () => {
                                 // Navigator.pushNamed(context, '/forget',
                                 //     arguments: {'id': '我是Named方法穿过来的参数'})
-                                Flutterdialog.showMyDialog(content: '哈哈哈')
+                                FlutterDialog.show(context, {'content': '哈哈哈'})
                               },
                         )),
                     // Padding(

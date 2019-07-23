@@ -22,23 +22,6 @@ class MyApp extends StatelessWidget {
       title: '网易云音乐',
       // 处理Named页面跳转 传递参数
       onGenerateRoute: (RouteSettings settings) {
-        // final Function pageContentBuilder = this.routes[settings.name];
-
-        // if (settings.name == RegisterPage.routeName) {
-        //   final ScreenArguments args = settings.arguments;
-        //   return MaterialPageRoute(
-        //     builder: (context) {
-        //       return RegisterPage(
-        //         title: args.title,
-        //       );
-        //     },
-        //   );
-        // } else {
-        //   final Route route = MaterialPageRoute(
-        //       builder: (context) => pageContentBuilder(context));
-        //   return route;
-        // }
-        // print(settings.arguments);
         // 统一处理
         final String name = settings.name;
         final Function pageContentBuilder = this.routes[name];

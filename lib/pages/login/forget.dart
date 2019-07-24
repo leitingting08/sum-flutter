@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgetPage extends StatelessWidget {
   ForgetPage({this.arguments});
@@ -47,7 +48,13 @@ class ForgetPage extends StatelessWidget {
                       height: 47,
                       margin: const EdgeInsets.only(top: 30),
                       child: new RaisedButton(
-                        onPressed: () => {},
+                        onPressed: () => {
+                            Fluttertoast.showToast(
+                              msg: "请输入手机号和密码",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         textColor: Colors.white,
@@ -58,8 +65,8 @@ class ForgetPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(padding: EdgeInsets.only(top: 20),
-                    child: Text('参数：${arguments != null ? arguments['id'] : '0'}'),)
+                    // Padding(padding: EdgeInsets.only(top: 20),
+                    // child: Text('参数：${arguments != null ? arguments['id'] : '0'}'),)
                   ],
                 ),
               ),

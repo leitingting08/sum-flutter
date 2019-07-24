@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => RegisterPage(),
                                     settings: RouteSettings(
-                                        arguments: {'title': '手机号登录','hinText':'请输入手机号','btnText':'登录'})))
+                                        arguments: {'id':'0','title': '手机号登录','hinText':'请输入手机号','btnText':'登录'})))
                             // Fluttertoast.showToast(
                             //   msg: "请先注册",
                             //   gravity: ToastGravity.CENTER,
@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => RegisterPage(),
                                     settings: RouteSettings(
-                                        arguments: {'title': '手机号注册','hinText':'请输入手机号','btnText':'注册'})))
+                                        arguments: {'id':'1','title': '手机号注册','hinText':'请输入手机号','btnText':'注册'})))
                           },
                     )),
                 GestureDetector(
@@ -118,7 +118,7 @@ class LoginPage extends StatelessWidget {
                                 MaterialPageRoute(
                                     builder: (context) => RegisterPage(),
                                     settings: RouteSettings(
-                                        arguments: {'title': '网易邮箱登录','hinText':'请输入邮箱','btnText':'登录'})))
+                                        arguments: {'id':'3','title': '网易邮箱登录','hinText':'请输入邮箱','btnText':'登录'})))
                             //  Navigator.pushNamed(context, '/register',
                             //     arguments: {'id': 2})
                           },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:app/utils/netutils.dart';
 import 'package:app/components/showMyDialog.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({
@@ -78,7 +79,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       height: 47,
                       margin: const EdgeInsets.only(top: 30),
                       child: RaisedButton(
-                        onPressed: () => {},
+                        onPressed: () => {
+                           Fluttertoast.showToast(
+                              msg: "请输入手机号和密码",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),
                         textColor: Colors.white,
@@ -89,41 +96,18 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ),
+                    args['id']!='1'?
                     Padding(
-                        padding: EdgeInsets.only(top: 100),
+                        padding: EdgeInsets.only(top: 10),
                         child: GestureDetector(
                           child: Text(
-                            '忘记密码',
-                            style: TextStyle(fontSize: 24),
+                            '忘记密码'
                           ),
                           onTap: () => {
-                                // Navigator.pushNamed(context, '/forget',
-                                //     arguments: {'id': '我是Named方法穿过来的参数'})
-                                FlutterDialog.show(context, {'content': '哈哈哈'})
+                                Navigator.pushNamed(context, '/forget')
+                                // FlutterDialog.show(context, {'content': '哈哈哈'})
                               },
-                        )),
-                    // Padding(
-                    //     padding: EdgeInsets.only(top: 100),
-                    //     child: GestureDetector(
-                    //       child: Text(
-                    //         eventEmitter,
-                    //         style: TextStyle(fontSize: 24),
-                    //       ),
-                    //       onTap: () => updateText("点击"),
-                    //       onDoubleTap: () => updateText("双击"),
-                    //       onLongPress: () => updateText("长按"),
-                    //     )),
-                    // Padding(
-                    //     padding: EdgeInsets.only(top: 100),
-                    //     child: GestureDetector(
-                    //       child: Text(
-                    //         dialogTxt,
-                    //         style: TextStyle(fontSize: 24),
-                    //       ),
-                    //       onTap: () => showDialog(
-                    //           context: context,
-                    //           builder: (_) => _generateAlertDialog("我是弹框的内容")),
-                    //     ))
+                        )):Container(),
                   ],
                 ),
               ),

@@ -35,6 +35,17 @@ class _RegisterPageState extends State<RegisterPage> {
       eventEmitter = text;
     });
   }
+void _postLogin(String userName, String userPassword) {
+    if (userName.isNotEmpty && userPassword.isNotEmpty) {
+     
+    } else {
+      Fluttertoast.showToast(
+        msg: "请输入用户名和密码",
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+      );
+    }
+}
 
   Widget build(context) {
     final Map args = ModalRoute.of(context).settings.arguments;
@@ -80,11 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       margin: const EdgeInsets.only(top: 30),
                       child: RaisedButton(
                         onPressed: () => {
-                           Fluttertoast.showToast(
-                              msg: "请输入手机号和密码",
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIos: 1,
-                            )
+                          //  _postLogin(_userNameController.text, _userPassController.text);
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50.0)),

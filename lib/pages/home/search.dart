@@ -8,7 +8,7 @@ class SearchPage extends StatelessWidget {
         title: TextFormField(
           autofocus: true,
           decoration: InputDecoration.collapsed(
-              hintText: "请输入关键词", fillColor: Color(0xFFffffff)),
+              hintText: "请输入关键词"),
         ),
         actions: <Widget>[
           //导航栏右侧菜单
@@ -20,7 +20,12 @@ class SearchPage extends StatelessWidget {
         ],
       ),
       body: Container(
-        child: Text('search'),
+        child: Column(children: <Widget>[
+          Row(children: <Widget>[
+            Text('历史记录'),
+             Icon(IconData(0xe662, fontFamily: 'iconfont'))
+          ],)
+        ],)
       ),
     );
   }

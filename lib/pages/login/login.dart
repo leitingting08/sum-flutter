@@ -40,11 +40,6 @@ class LoginPage extends StatelessWidget {
                                     builder: (context) => RegisterPage(),
                                     settings: RouteSettings(
                                         arguments: {'id':'0','title': '手机号登录','hinText':'请输入手机号','btnText':'登录'})))
-                            // Fluttertoast.showToast(
-                            //   msg: "请先注册",
-                            //   gravity: ToastGravity.CENTER,
-                            //   timeInSecForIos: 1,
-                            // )
                           },
                     )),
                 ButtonTheme(
@@ -91,21 +86,39 @@ class LoginPage extends StatelessWidget {
                         color: Colors.grey,
                         size: 40.0,
                       ),
-                      onPressed: () => {},
+                      onPressed: () => {
+                         Fluttertoast.showToast(
+                              msg: "微信暂不可用",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                      },
                     )),
                 Expanded(
                     flex: 1,
                     child: IconButton(
                       icon: Icon(IconData(0xe66a, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
-                      onPressed: () => {},
+                      onPressed: () => {
+                        Fluttertoast.showToast(
+                              msg: "QQ暂不可用",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                      },
                     )),
                 Expanded(
                     flex: 1,
                     child: IconButton(
                       icon: Icon(IconData(0xe60f, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
-                      onPressed: () => {},
+                      onPressed: () => {
+                        Fluttertoast.showToast(
+                              msg: "微博暂不可用",
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIos: 1,
+                            )
+                      },
                     )),
                 Expanded(
                     flex: 1,

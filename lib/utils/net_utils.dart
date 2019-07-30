@@ -11,8 +11,6 @@ Map<String,dynamic> optHeader = {
 
 var dio = new Dio(BaseOptions(connectTimeout: 30000,headers: optHeader));
 
-String host = 'http://localhost:3000';
-
 class NetUtils {
   static Future<Dio> instance() async{
     if (dio == null) {
@@ -28,7 +26,7 @@ class NetUtils {
           return options; //continue
         },
         onResponse: (Response response) {
-          print("响应之前");
+          print(response);
           // Do something with response data
           return response; // continue
         },

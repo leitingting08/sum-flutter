@@ -1,5 +1,10 @@
+final String hostAddress = 'http://localhost:3000';
+
 class Api {
-  login() {
+  loginApi() {
     // return
+  }
+  static hotSearchApi(){
+    return '$hostAddress/search/hot/detail';
   }
 }

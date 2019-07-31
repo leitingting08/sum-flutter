@@ -7,4 +7,7 @@ class Api {
   static hotSearchApi(){
     return '$hostAddress/search/hot/detail';
   }
+  static searchApi(){
+    return '$hostAddress/search';
+  }
 }

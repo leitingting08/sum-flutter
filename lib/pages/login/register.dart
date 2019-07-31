@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:app/utils/netutils.dart';
-import 'package:app/components/showMyDialog.dart';
+// import 'package:app/components/showMyDialog.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -15,6 +15,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _unameController = new TextEditingController();
+  TextEditingController _pwdController = new TextEditingController();
+  GlobalKey _formKey = new GlobalKey<FormState>();
+
   String passwordinput;
   String eventEmitter = '点击、双击长按事件的触发';
   String dialogTxt = '点击我出现弹框';
@@ -35,9 +39,9 @@ class _RegisterPageState extends State<RegisterPage> {
       eventEmitter = text;
     });
   }
-void _postLogin(String userName, String userPassword) {
+
+  void _postLogin(String userName, String userPassword) {
     if (userName.isNotEmpty && userPassword.isNotEmpty) {
-     
     } else {
       Fluttertoast.showToast(
         msg: "请输入用户名和密码",
@@ -45,7 +49,7 @@ void _postLogin(String userName, String userPassword) {
         timeInSecForIos: 1,
       );
     }
-}
+  }
 
   Widget build(context) {
     final Map args = ModalRoute.of(context).settings.arguments;
@@ -63,28 +67,40 @@ void _postLogin(String userName, String userPassword) {
                 child: Column(
                   children: <Widget>[
                     Form(
+                        key: _formKey, //设置globalKey，用于后面获取FormState
+                        autovalidate: true, //开启自动校验
                         child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(top: 30.0),
-                          child: TextFormField(
-                            autofocus: true,
-                            decoration: InputDecoration.collapsed(
-                              hintText: args['hinText'],
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.0),
+                              child: TextFormField(
+                                  autofocus: true,
+                                  controller: _unameController,
+                                  decoration: InputDecoration.collapsed(
+                                    hintText: args['hinText'],
+                                  ),
+                                  validator: (v) {
+                                    return v.trim().length > 0
+                                        ? null
+                                        : "用户名不能为空";
+                                  }),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 30.0),
-                          child: TextFormField(
-                            autofocus: false,
-                            decoration: InputDecoration.collapsed(
-                              hintText: passwordinput,
+                            Padding(
+                              padding: EdgeInsets.only(top: 30.0),
+                              child: TextFormField(
+                                  autofocus: false,
+                                  controller: _pwdController,
+                                  decoration: InputDecoration.collapsed(
+                                    hintText: passwordinput,
+                                  ),
+                                  validator: (v) {
+                                    return v.trim().length > 0
+                                        ? null
+                                        : "密码不能为空";
+                                  }),
                             ),
-                          ),
-                        ),
-                      ],
-                    )),
+                          ],
+                        )),
                     Container(
                       width: 310,
                       height: 47,
@@ -103,18 +119,17 @@ void _postLogin(String userName, String userPassword) {
                         ),
                       ),
                     ),
-                    args['id']!='1'?
-                    Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: GestureDetector(
-                          child: Text(
-                            '忘记密码'
-                          ),
-                          onTap: () => {
+                    args['id'] != '1'
+                        ? Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: GestureDetector(
+                              child: Text('忘记密码'),
+                              onTap: () => {
                                 Navigator.pushNamed(context, '/forget')
                                 // FlutterDialog.show(context, {'content': '哈哈哈'})
                               },
-                        )):Container(),
+                            ))
+                        : Container(),
                   ],
                 ),
               ),

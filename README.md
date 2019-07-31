@@ -17,6 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## 接口
 
-用的是 NeteaseCloudMusicApi node.js 版 API 
-https://github.com/Binaryify/NeteaseCloudMusicApi.git 
+用的是 NeteaseCloudMusicApi node.js 版 API   
+https://github.com/Binaryify/NeteaseCloudMusicApi.git   
 在本地运行node app.js  运行成功打开 http:localhost:3000

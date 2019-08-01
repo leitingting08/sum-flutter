@@ -65,8 +65,13 @@ class NetUtils {
     return response.data;
   }
 
+  // static Future get(String url, Map<String, dynamic> params) async {
+  //   var response = await (await instance()).get(url, queryParameters: params);
+  //   return response.data;
+  // }
+
   static Future post(String url, Map<String, dynamic> params) async {
-    var response = await dio.post(url, data: params);
+    var response = await (await instance()).post(url, data: params);
     return response.data;
   }
 }

@@ -46,7 +46,7 @@ class _SearchPageState extends State<SearchPage> {
           timeInSecForIos: 1,
         );
     }else{
-       NetUtils.get(Api.searchApi(),{'keywords':_searchController.text}).then((res) => {
+       NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
           print(res['result']['songs'])
         });
     }

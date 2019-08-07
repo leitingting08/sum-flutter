@@ -14,7 +14,7 @@ class _SearchPageState extends State<SearchPage> {
   TextEditingController _searchController = new TextEditingController();
   // GlobalKey _formKey= new GlobalKey<FormState>();
   List _lists = [];
-  List _histryLists = ['鱿小鱼'];
+  List _histryLists = ['刺猬'];
 
   @override
   void initState() {
@@ -84,9 +84,9 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               ),
               SizedBox(
-                  width: 350.0,
                   height: 50.0,
-                  child: ListView.builder(
+                  child: 
+                  ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: _histryLists.length,
                     itemBuilder: (BuildContext context, int index) {

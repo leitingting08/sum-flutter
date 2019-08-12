@@ -3,7 +3,8 @@ import 'package:app/pages/home/app.dart';
 import 'package:app/pages/login/login.dart';
 import 'package:app/pages/login/register.dart';
 import 'package:app/pages/login/forget.dart';
-import 'package:app/pages/home/search.dart';
+import 'package:app/pages/home/search_recommend.dart';
+import 'package:app/pages/home/search_result.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
     '/login': (context) => LoginPage(),
     '/forget': (context, {arguments}) => ForgetPage(arguments: arguments),
-    '/search': (context) => SearchPage(),
+    '/search': (context) => SearchRecommendPage(),
+    '/searchresult': (context) => SearchResultPage(),
     '/': (context) => AppPage(),
   };
   @override

@@ -10,4 +10,7 @@ class Api {
   static searchApi(){
     return '$hostAddress/search';
   }
+  static searchSuggestApi(){
+    return '$hostAddress/search/suggest';
+  }
 }

@@ -24,7 +24,6 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
 
   void _hotSearch() {
     NetUtils.get(Api.hotSearchApi()).then((res) => {
-          // print( res['data'])
           setState(() {
             _lists = res['data'];
           })
@@ -36,21 +35,8 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
       setState(() {
         _searchController.text = keyword;
       });
+      Navigator.pushNamed(context, '/searchresult');
   }
-
-  // void _searchMusic(){
-  //   if(_searchController.text==''){
-  //       Fluttertoast.showToast(
-  //         msg: "关键词不能为空",
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIos: 1,
-  //       );
-  //   }else{
-  //      NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
-  //         print(res['result']['songs'])
-  //       });
-  //   }
-  // }
 
   void _searchMusic(){
     if(_searchController.text!=''){
@@ -87,7 +73,7 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
         ),
         actions: <Widget>[
           //导航栏右侧菜单
-           _searchController.text!=null?
+           _searchController.text!=''?
            IconButton(
               icon: Icon(Icons.close, color: Colors.white54),
               onPressed: () {

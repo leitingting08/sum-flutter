@@ -21,13 +21,16 @@ class _SearchResultPageState extends State<SearchResultPage> {
     this._hotSearch();
   }
 
-  void _hotSearch() {
-    NetUtils.get(Api.hotSearchApi()).then((res) => {
-          // print( res['data'])
-          setState(() {
-            _lists = res['data'];
-          })
-        });
+  _hotSearch()  async{
+    try {
+      // var res = await NetUtils.get(Api.searchApi(),{'keyword':'刺猬'});
+      //  print( res['data']);
+          // setState(() {
+          //   _lists = res['data'];
+          // });
+    } catch(e){
+
+    }
   }
 
   void updateSearch(String keyword) {

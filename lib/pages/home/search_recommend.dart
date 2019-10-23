@@ -35,7 +35,7 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
       setState(() {
         _searchController.text = keyword;
       });
-      Navigator.pushNamed(context, '/searchresult');
+      Navigator.pushNamed(context, '/searchresult',arguments:_searchController.text);
   }
 
   void _searchMusic(){

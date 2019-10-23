@@ -12,55 +12,25 @@ class SearchResultPage extends StatefulWidget {
 
 class _SearchResultPageState extends State<SearchResultPage> {
   TextEditingController _searchController = new TextEditingController();
-  // GlobalKey _formKey= new GlobalKey<FormState>();
+  
   List _lists = [];
 
   @override
   void initState() {
     super.initState();
-    this._hotSearch();
   }
 
-  _hotSearch()  async{
-    try {
-      // var res = await NetUtils.get(Api.searchApi(),{'keyword':'刺猬'});
-      //  print( res['data']);
-          // setState(() {
-          //   _lists = res['data'];
-          // });
-    } catch(e){
-
-    }
-  }
-
-  void updateSearch(String keyword) {
-      print(keyword);
-      setState(() {
-        _searchController.text = keyword;
+  void _setResult(key) {
+     setState(() {
+        _searchController.text = key;
       });
+       if(_searchController.text!=''){
+          NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
+              print(res['result'])
+            });
+        }
   }
 
-  // void _searchMusic(){
-  //   if(_searchController.text==''){
-  //       Fluttertoast.showToast(
-  //         msg: "关键词不能为空",
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIos: 1,
-  //       );
-  //   }else{
-  //      NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
-  //         print(res['result']['songs'])
-  //       });
-  //   }
-  // }
-
-  void _searchMusic(){
-    if(_searchController.text!=''){
-       NetUtils.get(Api.searchSuggestApi(), {"type":"mobile","keywords":_searchController.text}).then((res) => {
-          print(res['result']['allMatch'])
-        });
-    }
-  }
 
   void _clearKeywords(){
      setState(() {
@@ -69,6 +39,8 @@ class _SearchResultPageState extends State<SearchResultPage> {
   }
 
   Widget build(BuildContext context) {
+    String keywords = ModalRoute.of(context).settings.arguments as String;
+     _setResult(keywords);
     return Scaffold(
       appBar: AppBar(
         title: TextField(
@@ -80,7 +52,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
               hintStyle: TextStyle(color: Colors.white70),
               ),
               onChanged:(v){
-                 _searchMusic();
+                //  _searchMusic();
               },
             // onEditingComplete: ()=>{
             //   _searchMusic()
@@ -93,12 +65,12 @@ class _SearchResultPageState extends State<SearchResultPage> {
               icon: Icon(Icons.close, color: Colors.white54),
               onPressed: () {
                 _clearKeywords();
-              }):Text('')
-          // IconButton(
-          //     icon: Icon(Icons.search, color: Colors.white),
-          //     onPressed: () {
-          //       _searchMusic();
-          //     }),
+              }):
+           IconButton(
+              icon: Icon(Icons.search, color: Colors.white),
+              onPressed: () {
+                // _searchMusic();
+              }),
         ],
       ),
       body: Container(
@@ -109,9 +81,6 @@ class _SearchResultPageState extends State<SearchResultPage> {
                 padding: EdgeInsets.only(top: 30, bottom: 20),
                 child: Column(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[Text('热搜榜')],
-                    ),
                     SizedBox(
                       height: 520.0,
                       child: ListView.builder(
@@ -156,12 +125,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                                   ],
                                 ),
                               ),
-                              onTap: () =>
-                                  updateSearch(_lists[index]['searchWord']),
                             );
-
-                            // return ListTile(
-                            //     title: Text(_lists[index]['searchWord']));
                           }),
                     )
                   ],

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ForgetPage extends StatelessWidget {
-  ForgetPage({this.arguments});
-  final Map arguments;
+  ForgetPage();
 
   @override
   Widget build(context) {

@@ -9,35 +9,18 @@ import 'package:app/pages/home/search_result.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // 定义路由信息
-  final Map<String, Function> routes = {
-    '/register': (context, {arguments}) => RegisterPage(arguments: arguments),
-    '/login': (context) => LoginPage(),
-    '/forget': (context, {arguments}) => ForgetPage(arguments: arguments),
-    '/search': (context) => SearchRecommendPage(),
-    '/searchresult': (context) => SearchResultPage(),
-    '/': (context) => AppPage(),
-  };
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '网易云音乐',
-      // 处理Named页面跳转 传递参数
-      onGenerateRoute: (RouteSettings settings) {
-        // 统一处理
-        final String name = settings.name;
-        final Function pageContentBuilder = this.routes[name];
-        if (settings.arguments != null) {
-          final Route route = MaterialPageRoute(
-              builder: (context) =>
-                  pageContentBuilder(context, arguments: settings.arguments));
-          return route;
-        } else {
-          // 不设置路由传参
-          final Route route = MaterialPageRoute(
-              builder: (context) => pageContentBuilder(context));
-          return route;
-        }
+      routes: {
+        // "/": (context) => AppPage(),
+        "/register": (context) => RegisterPage(),
+        "/login": (context) => LoginPage(),
+        "/forget": (context) => ForgetPage(),
+        "/search": (context) => SearchRecommendPage(),
+        "/searchresult": (context) => SearchResultPage(),
       },
       theme: new ThemeData(primarySwatch: Colors.red),
       home: AppPage(),

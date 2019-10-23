@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:app/pages/login/register.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -34,12 +33,9 @@ class LoginPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20.0)),
                       color: Colors.red,
                       onPressed: () => {
-                             Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterPage(),
-                                    settings: RouteSettings(
-                                        arguments: {'id':'0','title': '手机号登录','hinText':'请输入手机号','btnText':'登录'})))
+                         Navigator.pushNamed(
+                                context,"/register",arguments:  {'id':'0','title': '手机号登录','hinText':'请输入手机号','btnText':'登录'}
+                                )
                           },
                     )),
                 ButtonTheme(
@@ -55,12 +51,9 @@ class LoginPage extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterPage(),
-                                    settings: RouteSettings(
-                                        arguments: {'id':'1','title': '手机号注册','hinText':'请输入手机号','btnText':'注册'})))
+                         Navigator.pushNamed(
+                                context,"/register",arguments:   {'id':'1','title': '手机号注册','hinText':'请输入手机号','btnText':'注册'}
+                                )
                           },
                     )),
                 GestureDetector(
@@ -126,14 +119,9 @@ class LoginPage extends StatelessWidget {
                       icon: Icon(IconData(0xe63c, fontFamily: 'iconfont'),
                           color: Colors.grey, size: 40.0),
                       onPressed: () => {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterPage(),
-                                    settings: RouteSettings(
-                                        arguments: {'id':'3','title': '网易邮箱登录','hinText':'请输入邮箱','btnText':'登录'})))
-                            //  Navigator.pushNamed(context, '/register',
-                            //     arguments: {'id': 2})
+                        Navigator.pushNamed(
+                                context,"/register",arguments:  {'id':'3','title': '网易邮箱登录','hinText':'请输入邮箱','btnText':'登录'}
+                                )
                           },
                     )),
               ],

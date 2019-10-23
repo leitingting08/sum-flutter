@@ -5,10 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({
-    Key key,
-    this.arguments,
+    Key key
   }) : super(key: key);
-  final Map arguments;
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -52,7 +50,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget build(context) {
-    final Map args = ModalRoute.of(context).settings.arguments;
+    dynamic args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text(args['title']),
@@ -126,7 +124,6 @@ class _RegisterPageState extends State<RegisterPage> {
                               child: Text('忘记密码'),
                               onTap: () => {
                                 Navigator.pushNamed(context, '/forget')
-                                // FlutterDialog.show(context, {'content': '哈哈哈'})
                               },
                             ))
                         : Container(),

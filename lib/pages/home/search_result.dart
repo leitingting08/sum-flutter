@@ -26,7 +26,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
       });
        if(_searchController.text!=''){
           NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
-              print(res['result'])
+              // print(res['result'])
             });
         }
   }

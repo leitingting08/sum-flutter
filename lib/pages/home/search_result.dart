@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app/api/main.dart';
 import 'package:app/utils/net_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchResultPage extends StatefulWidget {
   @override

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:app/utils/netutils.dart';
-// import 'package:app/components/showMyDialog.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {

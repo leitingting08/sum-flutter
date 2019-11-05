@@ -13,7 +13,8 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchResultPage> {
   TextEditingController _searchController = new TextEditingController();
   
-  List _lists = [];
+  List _songs = [];
+  int _songCount = 0;
 
   @override
   void initState() {
@@ -26,7 +27,10 @@ class _SearchResultPageState extends State<SearchResultPage> {
       });
        if(_searchController.text!=''){
           NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
-              // print(res['result'])
+              setState(() {
+                _songs = res['result']['songs'];
+                _songCount = res['result']['songCount'];
+              })
             });
         }
   }
@@ -73,19 +77,17 @@ class _SearchResultPageState extends State<SearchResultPage> {
               }),
         ],
       ),
-      body: Container(
-          padding: EdgeInsets.all(20),
+      body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 30, bottom: 20),
+                padding:EdgeInsets.all(10),
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: 520.0,
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: _lists.length,
+                          itemCount: _songs.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               child: Padding(
@@ -94,20 +96,13 @@ class _SearchResultPageState extends State<SearchResultPage> {
                                   direction: Axis.horizontal,
                                   children: <Widget>[
                                     Expanded(
-                                        flex: 1,
-                                        child: Text(
-                                          (index + 1).toString(),
-                                          style: TextStyle(
-                                              color: Colors.red, fontSize: 18),
-                                        )),
-                                    Expanded(
                                       flex: 8,
                                       child: Column(
                                         children: <Widget>[
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                                _lists[index]['searchWord'],
+                                                _songs[index]['name'],
                                                 style: TextStyle(
                                                     color: Colors.grey[900],
                                                     fontSize: 16)),
@@ -115,7 +110,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                                _lists[index]['content'],
+                                                _songs[index]['alias'].join('-'),
                                                 style: TextStyle(
                                                     color: Colors.grey[500])),
                                           ),

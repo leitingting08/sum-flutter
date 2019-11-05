@@ -31,25 +31,27 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
   }
 
   void _updateSearch(String keyword) {
-      print(keyword);
-      setState(() {
-        _searchController.text = keyword;
-      });
-      Navigator.pushNamed(context, '/searchresult',arguments:_searchController.text);
+    print(keyword);
+    setState(() {
+      _searchController.text = keyword;
+    });
+    Navigator.pushNamed(context, '/searchresult',
+        arguments: _searchController.text);
   }
 
-  void _searchMusic(){
-    if(_searchController.text!=''){
-       NetUtils.get(Api.searchSuggestApi(), {"type":"mobile","keywords":_searchController.text}).then((res) => {
-          print(res['result']['allMatch'])
-        });
+  void _searchMusic() {
+    if (_searchController.text != '') {
+      NetUtils.get(Api.searchSuggestApi(), {
+        "type": "mobile",
+        "keywords": _searchController.text
+      }).then((res) => {print(res['result']['allMatch'])});
     }
   }
 
-  void _clearKeywords(){
-     setState(() {
-        _searchController.text = '';
-      });
+  void _clearKeywords() {
+    setState(() {
+      _searchController.text = '';
+    });
   }
 
   Widget build(BuildContext context) {
@@ -58,30 +60,31 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
         title: TextField(
           autofocus: true,
           controller: _searchController,
-          style:TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
           decoration: InputDecoration.collapsed(
-              hintText: "请输入关键词", 
-              hintStyle: TextStyle(color: Colors.white70),
-              ),
-              onChanged:(v){
-                _updateSearch(v);
-                 _searchMusic();
-              },
-            // onEditingComplete: ()=>{
-            //   _searchMusic()
-            // },
+            hintText: "请输入关键词",
+            hintStyle: TextStyle(color: Colors.white70),
+          ),
+          onChanged: (v) {
+            _updateSearch(v);
+            _searchMusic();
+          },
+          // onEditingComplete: ()=>{
+          //   _searchMusic()
+          // },
         ),
         actions: <Widget>[
           //导航栏右侧菜单
-           _searchController.text!=''?
-           IconButton(
-              icon: Icon(Icons.close, color: Colors.white54),
-              onPressed: () {
-                _clearKeywords();
-              }):Text('')
+          _searchController.text != ''
+              ? IconButton(
+                  icon: Icon(Icons.close, color: Colors.white54),
+                  onPressed: () {
+                    _clearKeywords();
+                  })
+              : Text('')
         ],
       ),
-      body: Container(
+      body: SingleChildScrollView(
           padding: EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
@@ -94,24 +97,21 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
               ),
               SizedBox(
                   height: 50.0,
-                  child: 
-                  ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _histryLists.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GestureDetector(
-                        child: Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: Chip(
-                            label: Text(_histryLists[index]),
-                          ),
-                        ),
-                        onTap: () => {
-                          _updateSearch(_histryLists[index])
-                        },
-                      );
-                    },
-                  )),
+                  child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _histryLists.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    child: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: Chip(
+                        label: Text(_histryLists[index]),
+                      ),
+                    ),
+                    onTap: () => {_updateSearch(_histryLists[index])},
+                  );
+                },
+              )),
               Padding(
                 padding: EdgeInsets.only(top: 30, bottom: 20),
                 child: Column(
@@ -119,9 +119,9 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
                     Row(
                       children: <Widget>[Text('热搜榜')],
                     ),
-                    SizedBox(
-                      height: 520.0,
+                    Container(
                       child: ListView.builder(
+                          scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           itemCount: _lists.length,
                           itemBuilder: (BuildContext context, int index) {

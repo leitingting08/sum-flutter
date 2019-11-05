@@ -42,7 +42,6 @@ class MyHome extends StatelessWidget {
               ),
             ),
             Container(
-              // color: Colors.white,
               child: Expanded(
                   flex: 10,
                   child: ListView(

@@ -124,6 +124,7 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
                           itemCount: _lists.length,
+                          physics:NeverScrollableScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               child: Padding(

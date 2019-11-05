@@ -87,6 +87,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                     SizedBox(
                       child: ListView.builder(
                           shrinkWrap: true,
+                          physics:NeverScrollableScrollPhysics(),
                           itemCount: _songs.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(

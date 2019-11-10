@@ -13,8 +13,10 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchResultPage> {
   TextEditingController _searchController = new TextEditingController();
   
-  List _songs = [];
-  int _songCount = 0;
+  List songs = [];
+  int songCount;
+  List orders = [];
+  dynamic matchResult;
 
   @override
   void initState() {
@@ -28,8 +30,15 @@ class _SearchResultPageState extends State<SearchResultPage> {
        if(_searchController.text!=''){
           NetUtils.get(Api.searchApi(), {"keywords":_searchController.text}).then((res) => {
               setState(() {
-                _songs = res['result']['songs'];
-                _songCount = res['result']['songCount'];
+                songs = res['result']['songs'];
+                songCount = res['result']['songCount'];
+              })
+            });
+
+            NetUtils.get(Api.multimatchApi(), {"keywords":_searchController.text}).then((res) => {
+              setState(() {
+                orders = res['result']['orders'];
+                matchResult = res['result'];
               })
             });
         }
@@ -88,7 +97,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                       child: ListView.builder(
                           shrinkWrap: true,
                           physics:NeverScrollableScrollPhysics(),
-                          itemCount: _songs.length,
+                          itemCount: songs.length,
                           itemBuilder: (BuildContext context, int index) {
                             return GestureDetector(
                               child: Padding(
@@ -103,7 +112,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                                _songs[index]['name'],
+                                                songs[index]['name'],
                                                 style: TextStyle(
                                                     color: Colors.grey[900],
                                                     fontSize: 16)),
@@ -111,7 +120,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                                _songs[index]['alias'].join('-'),
+                                                songs[index]['alias'].join('-'),
                                                 style: TextStyle(
                                                     color: Colors.grey[500])),
                                           ),

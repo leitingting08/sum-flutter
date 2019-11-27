@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '网易云音乐',
+      title: 'YUN音乐',
       routes: {
         // "/": (context) => AppPage(),
         "/register": (context) => RegisterPage(),

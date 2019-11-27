@@ -15,9 +15,19 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
   // GlobalKey _formKey= new GlobalKey<FormState>();
   List _lists = [];
   List _histryLists = ['刺猬'];
+  String f = "a b,c";
+String g;
+
 
   @override
   void initState() {
+  g  = f.splitMapJoin(",",
+   onMatch: (Match match) {
+     return "a";
+   }, onNonMatch: (String nonMatch) {
+     return "b";
+   });
+    print(g);//bab    a b,c  =>   bab
     super.initState();
     this._hotSearch();
   }

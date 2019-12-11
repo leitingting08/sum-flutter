@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app/api/main.dart';
 import 'package:app/utils/net_utils.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:app/utils/shared_preferences.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 
 class SearchRecommendPage extends StatefulWidget {
   @override
@@ -14,20 +15,11 @@ class _SearchRecommendPageState extends State<SearchRecommendPage> {
   TextEditingController _searchController = new TextEditingController();
   // GlobalKey _formKey= new GlobalKey<FormState>();
   List _lists = [];
-  List _histryLists = ['刺猬'];
-  String f = "a b,c";
-String g;
+  List _histryLists = [];
 
 
   @override
   void initState() {
-  g  = f.splitMapJoin(",",
-   onMatch: (Match match) {
-     return "a";
-   }, onNonMatch: (String nonMatch) {
-     return "b";
-   });
-    print(g);//bab    a b,c  =>   bab
     super.initState();
     this._hotSearch();
   }
@@ -42,6 +34,7 @@ String g;
 
   void _updateSearch(String keyword) {
     print(keyword);
+    // SpUtil.getInstance()
     setState(() {
       _searchController.text = keyword;
     });

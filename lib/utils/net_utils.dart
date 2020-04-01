@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:cookie_jar/cookie_jar.dart';
+// import 'package:cookie_jar/cookie_jar.dart';
 import 'package:path_provider/path_provider.dart';
 
 Map<String,dynamic> optHeader = {
@@ -56,7 +56,7 @@ class NetUtils {
     var dir = new Directory("$documentsPath/cookies");
     await dir.create();
     // print('documentPath:${dir.path}');
-    dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
+    // dio.interceptors.add(CookieManager(PersistCookieJar(dir: dir.path)));
     if (params != null) {
       response = await dio.get(url, queryParameters: params);
     } else {

@@ -1,4 +1,4 @@
-# 云音乐用flutter
+# flutter
 
 A new Flutter project.
 
@@ -14,9 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.io/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
-
-## 接口
-
-用的是 NeteaseCloudMusicApi node.js 版 API   
-https://github.com/Binaryify/NeteaseCloudMusicApi.git   
-在本地运行node app.js  运行成功打开 http:localhost:3000

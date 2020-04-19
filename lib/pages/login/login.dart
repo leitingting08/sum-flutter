@@ -9,13 +9,16 @@ class LoginPage extends StatelessWidget {
             child: Container(
       child: Column(
         children: <Widget>[
-          Padding(
+          Container(
             padding: EdgeInsets.only(top: 220.0, bottom: 260.0),
-            child: Image.asset(
-              "images/logo.png",
-              width: 60.0,
+            child: ClipRRect(
+              borderRadius:BorderRadius.circular(10.0),
+              child: Image.asset(
+               "images/logo.png",
+               width: 60.0,
               height: 60.0,
-            ),
+              )
+            )
           ),
           Container(
             width: 500.0,

@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'YUN音乐',
       routes: {
-        // "/": (context) => AppPage(),
         "/register": (context) => RegisterPage(),
         "/login": (context) => LoginPage(),
         "/forget": (context) => ForgetPage(),
